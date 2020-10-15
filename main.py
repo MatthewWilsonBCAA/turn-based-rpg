@@ -40,14 +40,12 @@ def attack():
         for i in attacks:
             if e.get().lower() == i[0].lower(): 
               enemy_health -= i[1]
-              attacked_time = timeleft
               if enemy_health <= 0:
                   enemy_health = 0
                   timeleft = 0
               break
-        if timeleft == (attacked_time + 1):
-            player_health -= random.randint(10,40)
-            attacked_time = 0
+        #if timeleft % 2 == 0:
+        
         # clear the text entry box. 
         e.delete(0, tkinter.END) 
           
@@ -64,7 +62,8 @@ def attack():
 def countdown(): 
   
     global timeleft 
-  
+    global player_health
+    player_health -= random.randint(10,40)
     # if a game is in play 
     if timeleft > 0: 
   
@@ -79,7 +78,7 @@ def countdown():
         timeLabel.after(1000, countdown) 
     elif timeleft == 0 and enemy_health == 0:
         timeLabel.config(text="Victory!")
-    elif player_health == 0:
+    elif player_health <= 0:
         timeLabel.config(text="Defeat!")
   
 # Driver Code 
