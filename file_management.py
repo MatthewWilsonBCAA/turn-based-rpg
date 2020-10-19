@@ -6,9 +6,10 @@
 
 import json
 import helper
+import items
 #name, health, max health, str, pow, def, acr, and spd
 warrior = ["Warrior", 25, 25, 15, 5, 15, 5, 5]
-wizard = ["Wizard", 20, 20, 5, 20, 5, 15, 5]
+wizard = ["Wizard", 20, 20, 5, 20, 5, 5, 15]
 vagrant = ["wanderer", 15, 15, 5, 5, 5, 20, 25]
 
 classes = [warrior, wizard, vagrant]
@@ -22,7 +23,7 @@ def new_game(stats: list) -> list:
     helper.clear()
     print("Pick your class: ")
     print("warrior - A warrior with high strength and defense, and decent health.")
-    print("wizard - A magister with high magical power and accuracy.")
+    print("wizard - A magister with high magical power and speed.")
     print("wanderer - A wanderer with low health, but high accuracy and speed.")
     choice = input()
     choice = choice.lower()
@@ -31,8 +32,13 @@ def new_game(stats: list) -> list:
         for i in classes:
             if choice == i[0].lower():
                 stats.append(i)
+                if choice == "warrior":
+                    stats.append([items.iron_sword])
+                elif choice == "wizard":
+                    stats.append([items.fire_ball])
+                elif choice == "wanderer":
+                    stats.append([items.long_bow])
                 stats[0][0] = name
-                stats.append([])
                 valid = False
                 break
         if valid == False:

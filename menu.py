@@ -17,6 +17,8 @@ menu_logo = """
 | \   ---   | |   \_/   |/    \_/   |||   --/
 """
 stats = []
+effects_list = ["Bladed Attack", "Flame Attack", "Ranged Attack"]
+
 def main_menu ():
     """Not for much, execpt showing the logo, and allowing the player to load/save data"""
     global menu_logo
@@ -59,8 +61,11 @@ def show_stats(stats: list) -> None:
 
 def show_items(items: list) -> None:
     """Simply for printing out the items of the player"""
+    global effects_list
     print("Items:")
     for i in items:
         helper.colored_text(f"{i[0]}/", 1)
+        temp_string = effects_list[i[1]-1]
+        helper.colored_text(f"---/{temp_string}", 1)
+        helper.colored_text(f"---/Intensity: {i[2]}", 1)
         helper.colored_text(f"---/{i[3]}", 1)
-
