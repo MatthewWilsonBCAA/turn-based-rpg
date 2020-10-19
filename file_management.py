@@ -5,6 +5,7 @@
 # name, effect, intensity, description
 
 import json
+import helper
 #name, health, max health, str, pow, def, acr, and spd
 warrior = ["Warrior", 25, 25, 15, 5, 15, 5, 5]
 wizard = ["Wizard", 20, 20, 5, 20, 5, 15, 5]
@@ -15,6 +16,10 @@ stats = []
 
 def new_game(stats: list) -> list:
     """will be used to create a new character"""
+    name = input("Please enter your name: ")
+    while not name:
+        name = input("Please enter your name: ")
+    helper.clear()
     print("Pick your class: ")
     print("warrior - A warrior with high strength and defense, and decent health.")
     print("wizard - A magister with high magical power and accuracy.")
@@ -26,6 +31,8 @@ def new_game(stats: list) -> list:
         for i in classes:
             if choice == i[0].lower():
                 stats.append(i)
+                stats[0][0] = name
+                stats.append([])
                 valid = False
                 break
         if valid == False:
