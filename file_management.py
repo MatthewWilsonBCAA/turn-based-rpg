@@ -33,11 +33,11 @@ def new_game(stats: list) -> list:
             if choice == i[0].lower():
                 stats.append(i)
                 if choice == "warrior":
-                    stats.append([items.iron_sword])
+                    stats.append([items.iron_sword, items.lesser_healing_potion])
                 elif choice == "wizard":
-                    stats.append([items.fire_ball])
+                    stats.append([items.fire_ball, items.lesser_healing_potion])
                 elif choice == "wanderer":
-                    stats.append([items.long_bow])
+                    stats.append([items.long_bow, items.lesser_healing_potion])
                 stats[0][0] = name
                 valid = False
                 break
